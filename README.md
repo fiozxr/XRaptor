@@ -37,7 +37,7 @@ sudo ./install_xraptor.sh</code></pre> </div>
     <li>Whitelist</li>
     <li>Telegram / Discord keys</li>
     DON'T UNDERSTAND ?
-    - https://fiozxr.github.io/xraptor/understand
+    - https://fiozxr.github.io/xraptor/understand.html
   </ul>
 </div>
 
