@@ -57,7 +57,9 @@ sudo systemctl restart xraptor sudo journalctl -u xraptor -f</code></pre> </div>
 </div>
 
 --
- https://instagram.com/@fiozxr
+
+ https://instagram.com/@fiozxr_
+ 
 ---
 
 📌 Contributing 
