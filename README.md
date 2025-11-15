@@ -36,6 +36,8 @@ sudo ./install_xraptor.sh</code></pre> </div>
     <li>BAN_TIME</li>
     <li>Whitelist</li>
     <li>Telegram / Discord keys</li>
+    DON'T UNDERSTAND ?
+    - https://fiozxr.github.io/xraptor/understand
   </ul>
 </div>
 
@@ -54,11 +56,8 @@ sudo systemctl restart xraptor sudo journalctl -u xraptor -f</code></pre> </div>
   </ul>
 </div>
 
-  </div>  <footer>
-    [ https://instagram.com/@fiozxr ]
-  </footer>
-</body>
-</html>
+--
+ https://instagram.com/@fiozxr
 ---
 
 📌 Contributing 
