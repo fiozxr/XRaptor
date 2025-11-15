@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XRaptor — Configuration Guide</title>
+  <style>
+    :root{--bg:#0f1720;--card:#0b1220;--accent:#00eaff;--text:#e6eef6}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;background:var(--bg);color:var(--text)}
+    header{padding:28px 20px;text-align:center;background:linear-gradient(90deg,#071018,#0c1622);border-bottom:1px solid rgba(255,255,255,0.03)}
+    header h1{margin:0;font-size:28px;color:var(--accent)}
+    header p{margin:6px 0 0;font-size:14px;opacity:.9}
+    .wrap{max-width:900px;margin:28px auto;padding:0 20px}
+    .card{background:var(--card);padding:18px;border-radius:10px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.03)}
+    h2{color:var(--accent);margin-top:0}
+    pre{background:#041018;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.02);font-size:13px}
+    code{font-family:Source Code Pro,monospace;font-size:13px}
+    ul{margin:8px 0 0 20px}
+    .note{font-size:13px;opacity:.9;margin-top:8px}
+    footer{max-width:900px;margin:18px auto 60px;padding:12px 20px;color:#9fb3bf;text-align:center}
+    a.btn{display:inline-block;background:var(--accent);color:#002;padding:8px 12px;border-radius:8px;font-weight:600;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>XRaptor — Configuration Guide</h1>
+    <p>Plain, clear steps to configure XRaptor for GitHub users</p>
+  </header>  <main class="wrap"><section class="card">
+  <h2>1. Where is the configuration file?</h2>
+  <p>After installation, XRaptor settings live at:</p>
+  <pre><code>/etc/xraptor/xraptor.conf</code></pre>
+  <p class="note">Open it with: <code>sudo nano /etc/xraptor/xraptor.conf</code></p>
+</section>
+
+<section class="card">
+  <h2>2. Basic settings you can change</h2>
+
+  <h3>THRESHOLD</h3>
+  <p>Number of failed logins allowed before blocking an IP.</p>
+  <pre><code>THRESHOLD=5</code></pre>
+  <p class="note">Example: set to 3 → blocks after 3 failed attempts.</p>
+
+  <h3>BAN_TIME</h3>
+  <p>How long an IP is blocked (seconds):</p>
+  <pre><code>BAN_TIME=3600</code></pre>
+  <p class="note">3600 = 1 hour. Use 600 for 10 minutes, 86400 for 24 hours.</p>
+
+  <h3>LOG_FILE</h3>
+  <p>Where XRaptor reads SSH failures from:</p>
+  <pre><code>LOG_FILE="/var/log/auth.log"</code></pre>
+
+  <h3>STATE_FILE</h3>
+  <p>Where XRaptor stores active bans (timestamp + IP):</p>
+  <pre><code>STATE_FILE="/var/run/xraptor-state.txt"</code></pre>
+
+  <h3>WHITELIST</h3>
+  <p>IPs that should never be blocked:</p>
+  <pre><code>WHITELIST="/etc/xraptor/whitelist.txt"</code></pre>
+  <p class="note">To whitelist an IP:</p>
+  <pre><code>echo "1.2.3.4" | sudo tee -a /etc/xraptor/whitelist.txt</code></pre>
+</section>
+
+<section class="card">
+  <h2>3. Enable Telegram alerts</h2>
+  <ol>
+    <li>Edit the config: <code>sudo nano /etc/xraptor/xraptor.conf</code></li>
+    <li>Set the fields:</li>
+  </ol>
+  <pre><code>ENABLE_TELEGRAM="yes"
+
+TELEGRAM_BOT_TOKEN="your_token_here" TELEGRAM_CHAT_ID="your_chat_id_here"</code></pre> <p class="note">Restart XRaptor after editing:</p> <pre><code>sudo systemctl restart xraptor</code></pre> </section>
+
+<section class="card">
+  <h2>4. Enable Discord alerts</h2>
+  <p>Edit the config:</p>
+  <pre><code>ENABLE_DISCORD="yes"
+
+DISCORD_WEBHOOK="https://discord.com/api/webhooks/...."</code></pre> <p class="note">Restart service:</p> <pre><code>sudo systemctl.restart xraptor</code></pre> </section>
+
+<section class="card">
+  <h2>5. Restart XRaptor after changes</h2>
+  <pre><code>sudo systemctl restart xraptor</code></pre>
+  <p class="note">Always restart to apply new settings.</p>
+</section>
+
+<section class="card">
+  <h2>6. Check XRaptor status</h2>
+  <pre><code>sudo systemctl status xraptor</code></pre>
+  <p class="note">If active, you will see <code>active (running)</code>.</p>
+</section>
+
+<section class="card">
+  <h2>7. View logs</h2>
+  <pre><code>sudo journalctl -u xraptor -f</code></pre>
+  <p class="note">Shows live events: blocks, unblocks, alerts.</p>
+</section>
+
+<section class="card">
+  <h2>8. See currently blocked IPs</h2>
+  <pre><code>cat /var/run/xraptor-state.txt</code></pre>
+  <p class="note">Shows lines like: <code>timestamp IP</code></p>
+</section>
+
+<section class="card">
+  <h2>9. Manually unblock an IP</h2>
+  <p>Remove the IP line from the state file and restart:</p>
+  <pre><code>sudo nano /var/run/xraptor-state.txt
+
+remove the line for the IP
+
+sudo systemctl restart xraptor</code></pre> </section>
+
+<section class="card">
+  <h2>10. Troubleshooting — XRaptor isn’t blocking?</h2>
+  <ul>
+    <li>Make sure your SSH log exists: <code>/var/log/auth.log</code> or <code>/var/log/secure</code>.</li>
+    <li>XRaptor must run as root (systemd service runs as root).</li>
+    <li>Your system should use <code>iptables</code> or adapt the script for <code>ufw</code>/<code>nftables</code>.</li>
+    <li>Check threshold is not too high.</li>
+    <li>View <code>journalctl -u xraptor -f</code> for errors.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>11. Uninstall XRaptor</h2>
+  <pre><code>sudo systemctl stop xraptor
+
+sudo systemctl disable xraptor sudo rm /etc/systemd/system/xraptor.service sudo rm -rf /etc/xraptor sudo rm /usr/local/bin/xraptor.sh sudo systemctl daemon-reload</code></pre> </section>
+
+<section class="card">
+  <h2>12. Quick summary</h2>
+  <ul>
+    <li>Edit config: <code>/etc/xraptor/xraptor.conf</code></li>
+    <li>Restart: <code>sudo systemctl restart xraptor</code></li>
+    <li>Whitelist admin IPs to avoid lockout</li>
+    <li>Enable alerts by adding tokens/webhooks</li>
+  </ul>
+</section>
+
+<div style="text-align:center;margin-top:18px">
+  <a class="btn" href="https://github.com/fiozxr/xraptor">Open GitHub repo</a>
+</div>
+
+  </main>  <footer>XRaptor — simple configuration guide • Generated for GitHub users</footer>
+</body>
+</html>
