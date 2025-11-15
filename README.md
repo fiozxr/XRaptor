@@ -1,213 +1,156 @@
-# XRaptor
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRaptor – SSH Intrusion Prevention</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #e5e5e5;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(90deg, #111, #1a1a1a);
+      border-bottom: 1px solid #333;
+    }
+    h1 {
+      font-size: 48px;
+      margin: 0;
+      color: #00eaff;
+    }
+    h2 {
+      color: #00eaff;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 50px;
+      padding: 20px;
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+    }
+    code, pre {
+      background: #0f0f0f;
+      padding: 15px;
+      border-radius: 8px;
+      display: block;
+      overflow-x: auto;
+      border: 1px solid #222;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #333;
+      background: #111;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #00eaff;
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background: #00c9d6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>XRaptor</h1>
+    <p>Real‑time SSH Intrusion Prevention System</p>
+    <a href="https://github.com/fiozxr/xraptor" class="btn">View yourusernameurusernameurusername GitHub</a>
+  </header>  <div class="container"><div class="section">
+  <h2>🚀 What is XRaptor?</h2>
+  <p>
+    XRaptor is a lightning‑fast, real‑time SSH brute‑force protection daemon.
+    It monitors SSH logs, detects attackers, blocks malicious IPs, auto‑unblocks after expiry, and supports Telegram + Discord alerts.
+    Built in pure Bash — no dependencies.
+  </p>
+</div>
 
-XRaptor is a lightweight, real‑time, automatic intrusion‑prevention tool designed to monitor SSH logs, detect brute‑force attempts, auto‑block attackers, auto‑unblock after expiry, and send optional notifications. It works as a full daemon + installer script.
+<div class="section">
+  <h2>✨ Features</h2>
+  <ul>
+    <li>Real‑time SSH log monitoring</li>
+    <li>Auto‑block repeated login failures</li>
+    <li>Auto‑unblock after expiration</li>
+    <li>Whitelist supported</li>
+    <li>Telegram + Discord alerts</li>
+    <li>Runs as a systemd daemon</li>
+    <li>Lightweight — pure Bash</li>
+  </ul>
+</div>
 
+<div class="section">
+  <h2>📦 Installation</h2>
+  <pre><code>sudo chmod +x install_xraptor.sh
+
+sudo ./install_xraptor.sh</code></pre> </div>
+
+<div class="section">
+  <h2>⚙️ Configuration</h2>
+  <pre><code>/etc/xraptor/xraptor.conf</code></pre>
+  <p>Includes:</p>
+  <ul>
+    <li>THRESHOLD</li>
+    <li>BAN_TIME</li>
+    <li>Whitelist</li>
+    <li>Telegram / Discord keys</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>🛠 Commands</h2>
+  <pre><code>sudo systemctl status xraptor
+
+sudo systemctl restart xraptor sudo journalctl -u xraptor -f</code></pre> </div>
+
+<div class="section">
+  <h2>🌐 Alerts</h2>
+  <p>XRaptor supports:</p>
+  <ul>
+    <li>Telegram Bot Alerts</li>
+    <li>Discord Webhook Alerts</li>
+  </ul>
+</div>
+
+  </div>  <footer>
+    XRaptor by FIOZXR • MIT License • GitHub Pages
+  </footer>
+</body>
+</html>
 ---
 
-# GITHUB PAGE
+📌 Contributing
 
-https://fiozxr.github.io/XRaptor/
+Pull requests are welcome! Feel free to open issues for bugs, ideas, or improvements.
 
----
+⭐ Support
 
-✨ Features
+If you find XRaptor useful, please give the repository a star on GitHub — it helps a lot!
 
-Real‑time log monitoring (tail‑F based)
+📢 Social
 
-Detect failed SSH login attempts
-
-Auto‑block suspicious IPs using iptables
-
-Auto‑unblock after configurable time
-
-Whitelist support
-
-Persistent state tracking
-
-Discord Webhook alerts (optional)
-
-Telegram alerts (optional)
-
-Simple Installer with auto‑service creation
-
-Runs as a systemd service
-
-Lightweight & fast — pure Bash
-
-
-
----
-
-📦 Installation
-
-1️⃣ Create installer file
-
-Copy the installer script from the "Xraptor - Installer And Daemon" file. Save as:
-
-sudo nano install_xraptor.sh
-
-Paste → Save → Exit.
-
-2️⃣ Make installer executable
-
-sudo chmod +x install-fiozxrr.sh
-
-3️⃣ Run installer
-
-sudo ./install-xraptor.sh
-
-The installer will:
-
-Install XRaptor daemon
-
-Create /usr/local/bin/xraptor.sh
-
-Create systemd service xraptor.service
-
-Enable & start service
-
-
-
----
-
-⚙️ Configuration
-
-After installation, config file is located at:
-
-/etc/xraptor/xraptor.conf
-
-Editable settings
-
-THRESHOLD=5            # Max attempts before block
-BAN_TIME=3600          # Seconds (1 hr default)
-LOG_FILE="/var/log/auth.log"
-STATE_FILE="/var/run/xraptor-state.txt"
-WHITELIST="/etc/xraptor/whitelist.txt"
-
-ENABLE_TELEGRAM="no"
-TELEGRAM_BOT_TOKEN=""
-TELEGRAM_CHAT_ID=""
-
-ENABLE_DISCORD="no"
-DISCORD_WEBHOOK=""
-
-After editing config:
-
-sudo systemctl restart xraptor
-
-
----
-
-🚀 Usage
-
-Check XRaptor status
-
-sudo systemctl status xraptor
-
-Start / Stop / Restart
-
-sudo systemctl start xraptor
-sudo systemctl stop xraptor
-sudo systemctl restart xraptor
-
-View logs
-
-sudo journalctl -u xraptor -f
-
-View blocked IPs
-
-cat /var/run/xraptor-state.txt
-
-Whitelist an IP
-
-echo "1.2.3.4" | sudo tee -a /etc/xraptor/whitelist.txt
-sudo systemctl restart xraptor
-
-Whitelist prevents blocking.
-
-
----
-
-🔧 How It Works (Internals)
-
-XRaptor monitors SSH logs via tail -Fn0 /var/log/auth.log.
-
-On each "Failed password" entry:
-
-Extracts attacking IP
-
-Counts attempts in log
-
-If count ≥ threshold → IP is blocked
-
-
-Blocked IP is stored in STATE_FILE with timestamp
-
-Every cycle checks expired bans & unblocks IP
-
-Alert hooks send notifications (if enabled)
-
-
-
----
-
-🔔 Notifications
-
-Enable Telegram Alerts
-
-Edit config:
-
-ENABLE_TELEGRAM="yes"
-TELEGRAM_BOT_TOKEN="<your-bot-token>"
-TELEGRAM_CHAT_ID="<your-chat-id>"
-
-Restart:
-
-sudo systemctl restart xraptor
-
-Enable Discord Webhook Alerts
-
-ENABLE_DISCORD="yes"
-DISCORD_WEBHOOK="https://discord.com/api/webhooks/..."
-
-Restart.
-
-
----
-
-🗑 Uninstall
-
-sudo systemctl stop xraptor
-sudo systemctl disable xraptor
-sudo rm /etc/systemd/system/xraptor.service
-sudo rm -rf /etc/xraptor
-sudo rm /usr/local/bin/xraptor.sh
-sudo rm /usr/local/bin/install_xraptor.sh
-sudo systemctl daemon-reload
-
-
----
-
-🛡 Recommended Security Setup
-
-Change default SSH port
-
-Disable password auth → use SSH keys
-
-Configure Fail2Ban (can run alongside XRaptor)
-
-Use UFW firewall
-
-
-
----
-
-📜 License
-
-MIT — free to modify, distribute, and use.
-
-
----
-
-👤 Author
-![https://www.github.com/fiozxr] FIOZXR
+You can share XRaptor, fork it, modify it, and build on top of it freely.
