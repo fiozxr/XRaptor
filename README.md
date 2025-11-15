@@ -1,87 +1,5 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XRaptor – SSH Intrusion Prevention</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
-      color: #e5e5e5;
-    }
-    header {
-      padding: 40px 20px;
-      text-align: center;
-      background: linear-gradient(90deg, #111, #1a1a1a);
-      border-bottom: 1px solid #333;
-    }
-    h1 {
-      font-size: 48px;
-      margin: 0;
-      color: #00eaff;
-    }
-    h2 {
-      color: #00eaff;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-    .section {
-      margin-bottom: 50px;
-      padding: 20px;
-      background: #151515;
-      border: 1px solid #222;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-    }
-    code, pre {
-      background: #0f0f0f;
-      padding: 15px;
-      border-radius: 8px;
-      display: block;
-      overflow-x: auto;
-      border: 1px solid #222;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #333;
-      background: #111;
-      margin-top: 40px;
-      font-size: 14px;
-    }
-    a {
-      color: #00eaff;
-      text-decoration: none;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      background: #00eaff;
-      color: #000;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn:hover {
-      background: #00c9d6;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>XRaptor</h1>
-    <p>Real‑time SSH Intrusion Prevention System</p>
-    <a href="https://github.com/fiozxr/xraptor" class="btn">View on GitHub</a>
-  </header>  <div class="container"><div class="section">
+# XRaptor 
+
   <h2>🚀 What is XRaptor?</h2>
   <p>
     XRaptor is a lightning‑fast, real‑time SSH brute‑force protection daemon.
@@ -137,7 +55,7 @@ sudo systemctl restart xraptor sudo journalctl -u xraptor -f</code></pre> </div>
 </div>
 
   </div>  <footer>
-    XRaptor by FIOZXR • MIT License • GitHub Pages
+    [ https://instagram.com/@fiozxr ]
   </footer>
 </body>
 </html>
