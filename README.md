@@ -45,11 +45,11 @@ Paste → Save → Exit.
 
 2️⃣ Make installer executable
 
-sudo chmod +x install_xraptor.sh
+sudo chmod +x install-fiozxrr.sh
 
 3️⃣ Run installer
 
-sudo ./install_xraptor.sh
+sudo ./install-xraptor.sh
 
 The installer will:
 
@@ -205,4 +205,4 @@ MIT — free to modify, distribute, and use.
 ---
 
 👤 Author
-![www.github.com/fiozxr] FIOZXR
+![https://www.github.com/fiozxr] FIOZXR
