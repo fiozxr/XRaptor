@@ -80,7 +80,7 @@
   <header>
     <h1>XRaptor</h1>
     <p>Real‑time SSH Intrusion Prevention System</p>
-    <a href="https://github.com/fiozxr/xraptor" class="btn">View yourusernameurusernameurusername GitHub</a>
+    <a href="https://github.com/fiozxr/xraptor" class="btn">View on GitHub</a>
   </header>  <div class="container"><div class="section">
   <h2>🚀 What is XRaptor?</h2>
   <p>
@@ -143,7 +143,7 @@ sudo systemctl restart xraptor sudo journalctl -u xraptor -f</code></pre> </div>
 </html>
 ---
 
-📌 Contributing
+📌 Contributing 
 
 Pull requests are welcome! Feel free to open issues for bugs, ideas, or improvements.
 
