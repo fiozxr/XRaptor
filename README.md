@@ -6,7 +6,7 @@ XRaptor is a lightweight, real‑time, automatic intrusion‑prevention tool des
 
 # GITHUB PAGE
 
-https://www.fiozxr.github.io/xraptor
+https://fiozxr.github.io/XRaptor/
 
 ---
 
