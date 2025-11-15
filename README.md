@@ -205,4 +205,4 @@ MIT — free to modify, distribute, and use.
 ---
 
 👤 Author
-![www.github.com/fiozxr]FIOZXR
+![www.github.com/fiozxr] FIOZXR
